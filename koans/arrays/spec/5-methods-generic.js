@@ -1,16 +1,16 @@
 describe('Arrays - generic methods', function () {
   it('1 - should understand join is a generic method', function () {
-    expect(Array.prototype.join.call('Hello', '.')).toBe(__);
-    expect(Array.prototype.join.call({ 0: 'Zero', 1: 'First', 2: 'Second', length: 3 }, '-')).toBe(__);
-    expect(Array.prototype.join.call({ length: 3 }, '-')).toBe(__);
+    expect(Array.prototype.call('Hello', '.')).toBe('H.e.l.l.o');
+    expect(Array.prototype.join.call({ 0: 'Zero', 1: 'First', 2: 'Second', length: 3 }, '-')).toBe('Zero-First-Second');
+    expect(Array.prototype.join.call({ length: 3 }, '-')).toBe('');
   });
   it('2 - should understand push is a generic method', function () {
     var obj = { 0: 'Zero', 1: 'First', 2: 'Second', length: 3 };
-    expect(Array.prototype.push.call(obj, 'Third', 'Fourth')).toBe(__);
-    expect(obj).toEqual(__);
+    expect(Array.prototype.push.call(obj, 'Third', 'Fourth')).toBe(5);
+    expect(obj).toEqual({ 0: 'Zero', 1: 'First', 2: 'Second', 3: 'Third', 4:'Fourth', length : 5});
     obj = {};
-    expect(Array.prototype.push.call(obj, 'Myamoto', 'Hattori')).toBe(__);
-    expect(obj).toEqual(__);
+    expect(Array.prototype.push.call(obj, 'Myamoto', 'Hattori')).toBe(2);
+    expect(obj).toEqual({0: 'Myamoto', 1: 'Hattori' , length : 2});
   });
   it('3 - should understand that in order to call/apply push method, the underlying object has to be mutable', function () {
     var hello = 'Hello';
@@ -48,7 +48,8 @@ describe('Arrays - generic methods', function () {
     }
     expect(wasError).toBe(__);
     expect(Array.prototype.splice.call(args, 0, 1)).toEqual(__);
-    expect(args).toEqual(__);
+    console.log(args);
+    expect(args).toEqual({0 : 2, 1: 3});
   });
   it('9 - should understand reverse is generic method', function () {
     var obj = { 0: 'Zero', 1: 'First', 2: 'Second', 3: 'Third', 4: 'Fourth', length: 5 };
